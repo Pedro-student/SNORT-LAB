@@ -1,0 +1,6 @@
+alert icmp any any -> any any (msg:"Ping Detectado"; itype:8; sid:1000001; rev:1;)
+alert tcp any any -> any 80 (msg:"Tentativa de Command Injection (/etc/passwd)"; content:"/etc/passwd"; nocase; sid:1000003; rev:1;)
+alert tcp any any -> any 80 (msg:"Tentativa de Path Traversal (../)"; content:"../"; nocase; sid:1000004; rev:1;)
+alert tcp any any -> any 80 (msg:"Suspeita de SQL Injection"; content:"' or 1=1"; nocase; sid:1000005; rev:1;)
+alert tcp any any -> any any (msg:"Nmap Xmas Scan detectado"; flags:FPU; sid:1000008; rev:1;)
+alert tcp any any -> any any (msg:"Possivel Nmap SYN Scan detectado"; flags:S; ack:0; sid:1000007; rev:1;)
